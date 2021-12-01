@@ -1,0 +1,20 @@
+.document {
+	--color-text-main: #121314;
+	--color-text-alt: #9baacf;
+	--color-text-accent: red;
+	--color-bg-main: ghostwhite;
+	--color-bg-alt: ghostwhite;
+	--color-bg_accent: rgba(255, 0, 0, 0.5);
+}
+
+.switcher__radio {
+	filter: invert(0);
+}
+
+.switcher__radio:checked {
+	filter: invert(1);
+}
+
+.switcher__status {
+	filter: invert(0);
+}

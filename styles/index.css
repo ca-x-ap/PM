@@ -1,0 +1,22 @@
+* {
+	box-sizing: border-box;
+}
+
+.document {
+	/* --width_block: min(55rem, 100% - 1rem); */
+	/* --base_padding: 1rem; */
+}
+
+:root {
+	color-scheme: light dark;
+	accent-color: var(--color-text-accent);
+}
+
+.container {
+	margin: 0;
+	background: var(--color-bg-main);
+	scroll-behavior: smooth;
+	font-family: "Roboto", -apple-system, system-ui, sans-serif;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
