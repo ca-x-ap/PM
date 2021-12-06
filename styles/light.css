@@ -2,9 +2,10 @@
 	--color-text-main: #121314;
 	--color-text-alt: #9baacf;
 	--color-text-accent: red;
-	--color-bg-main: ghostwhite;
-	--color-bg-alt: ghostwhite;
-	--color-bg_accent: rgba(255, 0, 0, 0.5);
+
+	--color-bg-main: rgb(228, 228, 228);
+	--color-bg-alt: rgb(59, 59, 59);
+	--color-bg_accent: rgb(255, 255, 255);
 }
 
 .switcher__radio {
