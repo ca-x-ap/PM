@@ -4,6 +4,9 @@
 
 Password Manager. Use JSON. Saves and encrypts JSON Tree as file.
 
+- ! Basic version in development
+- ! Need to add library (in development)
+
 ## Getting Started
 
 Open this (/) or
@@ -17,17 +20,15 @@ Open this (/) or
 
 ## File Structure
 
-1. [](/README.md)
-2. [](/README.md)
-3. [](/README.md)
-4. [](/README.md)
-5. [](/README.md)
-6. [](/README.md)
+1. [lib](lib/README.md)
+2. [components](components/README.md)
+3. [app](app/README.md)
+4. [styles](styles/README.md)
 
 ---
 
 ## Auth
 
-> [WebSite](https://a-p-i-s.github.io/a-p-i-s/);
+<!-- > [WebSite](https://a-p-i-s.github.io/a-p-i-s/); -->
 
 > [Email](mailto:alexander.poz.ur@gmail.com);
