@@ -1,11 +1,11 @@
 .document {
 	--color-text-main: #121314;
-	--color-text-alt: #9baacf;
-	--color-text-accent: red;
+	--color-text-alt: #dadde6;
+	--color-text-accent: rgb(66, 66, 66);
 
-	--color-bg-main: rgb(228, 228, 228);
+	--color-bg-main: #FFFFFF;
 	--color-bg-alt: rgb(59, 59, 59);
-	--color-bg_accent: rgb(255, 255, 255);
+	--color-bg-accent: #c5c5c5;
 }
 
 .switcher__radio {
