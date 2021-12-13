@@ -13,11 +13,15 @@ class SimpleTable extends HTMLEl {
 	]}
 
 	get props() { return {
-		id: { observer: ({ id }) => console.info(id) },
-		name: { observer: ({ name }) => this.tableNameEl.value = name },
-		created: { observer: ({ created }) => this.tableCreatedEl.innerText = created },
-		updated: { observer: ({ updated }) => this.tableUpdatedEl.innerText = updated },
-
+		options: {
+			observer: ({ options }) => {
+				const { name, dateTime, cells } = options;
+				const { created, lastUpdate } = dateTime;
+				cells.forEach(cell => {
+					const { name, password, ... other } = cell;
+				});
+			}
+		}
 	}}
 
 	constructor() {
