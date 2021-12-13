@@ -19,6 +19,7 @@ class ViewPage extends HTMLEl {
 
 			.slider {
 				width: 45rem;
+				height: 20rem;
 			}
 
 			.content {
@@ -32,11 +33,15 @@ class ViewPage extends HTMLEl {
 
 			<simple-slider class="slider">
 				<simple-table></simple-table>
+				<simple-table class="active"></simple-table>
+				<simple-table></simple-table>
 			</simple-slider>
-			<div class="table"></div>
+
+
 	`}
 
 	get getEls() { return [
+		'.slider'
 	]}
 
 	static get observedAttributes() { return [
@@ -67,6 +72,7 @@ class ViewPage extends HTMLEl {
 	}
 
 	connectedCallback() {
+		this.sliderEl.activeItem = 1;
 		const tables = this.getPasswordTables();
 
 		if (tables || tables.length) {
@@ -77,31 +83,16 @@ class ViewPage extends HTMLEl {
 	}
 
 	getPasswordTables() {
-		return [
-			{
+		return [{
 				name: 'some table name',
 				description: '',
 				type: 'text',
-				dateTime: {
-					created: '',
-					lastUpdate: '',
-				},
-				cells: [
-					{
-						name: {
-							value: '',
-							isHidden: false,
-							lastUpdateDateTime: '',
-						},
-						password: {
-							value: '',
-							isHidden: true,
-							lastUpdateDateTime: '',
-						},
-					}
-				]
-			}
-		];
+				dateTime: { created: '', lastUpdate: '' },
+				cells: [{
+						name: { value: '', isHidden: false, lastUpdateDateTime: '' },
+						password: { value: '', isHidden: true, lastUpdateDateTime: '' },
+				}]
+		}];
 	}
 }
 
