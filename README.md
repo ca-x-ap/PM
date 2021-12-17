@@ -12,10 +12,8 @@ Password Manager. Use JSON. Saves and encrypts JSON Tree as file.
 Open this (/) or
 
 ```
-
 > Install files
 > Open index.html with your browser
-
 ```
 
 ## File Structure
