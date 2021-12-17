@@ -1,0 +1,27 @@
+{
+  "name": "pm",
+  "version": "1.0.0",
+  "description": "## About it",
+  "main": "extension.js",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "eslint": "^8.4.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ca-x-ap/PM.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ca-x-ap/PM/issues"
+  },
+  "homepage": "https://github.com/ca-x-ap/PM#readme"
+}
