@@ -1,4 +1,8 @@
 class RootApp extends HTMLEl {
+	get html () { return `
+		<page-layout />
+	`}
+
 	connectedCallback() {
 		const pathNames = window.location.pathname.split('/').filter(pName => pName !== '');
 		const pageNameWithoutIndexPath = pathNames.filter(pName => pName !== 'PM' && pName !== 'index.html');
@@ -6,7 +10,7 @@ class RootApp extends HTMLEl {
 
 		import(`/pages/${pageName}.js`).then(() => {
 			const pageEl = makeEl(toKebabCase(pageName));
-			this.shadowRoot.append(pageEl);
+			this.shadowRoot.querySelector('page-layout').append(pageEl);
 		}).catch(error => console.error('Page is not loaded', error));
 	}
 }
