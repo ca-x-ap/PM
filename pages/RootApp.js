@@ -8,7 +8,7 @@ class RootApp extends HTMLEl {
 		const pageNameWithoutIndexPath = pathNames.filter(pName => pName !== 'PM' && pName !== 'index.html');
 		const pageName = pageNameWithoutIndexPath[0] || 'ViewPage';
 
-		import(`/pages/${pageName}.js`).then(() => {
+		import(`/pages/${ pageName }.js`).then(() => {
 			const pageEl = makeEl(toKebabCase(pageName));
 			this.shadowRoot.querySelector('page-layout').append(pageEl);
 		}).catch(error => console.error('Page is not loaded', error));
