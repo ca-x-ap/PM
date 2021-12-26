@@ -1,3 +1,4 @@
+import { onError } from '/lib/lib.js';
 import { getGroupsInStore } from '/app/store.js';
 
 class ViewPage extends HTMLEl {

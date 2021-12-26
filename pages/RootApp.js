@@ -1,3 +1,8 @@
+import { HTMLEl } from '/lib/lib.js';
+
+import { makeEl } from '/lib/lib.js';
+import { toKebabCase } from '/lib/lib.js';
+
 class RootApp extends HTMLEl {
 	get html () { return `
 		<page-layout />

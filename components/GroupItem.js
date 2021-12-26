@@ -1,3 +1,5 @@
+import { clearContainerEl } from '/lib/lib.js';
+
 class GroupItem extends HTMLEl {
 	get html() { return `
 		<div class="title"></div>
