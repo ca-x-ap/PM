@@ -1,7 +1,3 @@
-import('/components/PageLayout.js');
-import('/components/GroupsList.js');
-import('/components/GroupItem.js');
-import('/components/ItemItem.js');
 import { getGroupsInStore } from '/app/store.js';
 
 class ViewPage extends HTMLEl {
@@ -22,9 +18,12 @@ class ViewPage extends HTMLEl {
 	`}
 
 	get props() { return {
-		groups: {
-			transformer: ({ groups }) => groups || [],
-			observer: ({ groups }) => this.groupsListEl.groups = groups
+		db: {
+			transformer: ({ db }) => db || []
+		},
+		openGroups: {
+			transformer: ({ openGroups }) => openGroups || [],
+			observer: ({ openGroups }) => this.groupsListEl.groups = openGroups
 		},
 		openGroup: {
 			observer: ({ openGroup }) => openGroup
@@ -57,7 +56,21 @@ class ViewPage extends HTMLEl {
 	}
 
 	connectedCallback() {
-		this.update();
+		const groups = getGroupsInStore();
+		const isGroupsValidArray = groups instanceof Array && groups.length > 0;
+		if (isGroupsValidArray) {
+			Promise.all([
+				import('/components/GroupsList.js'),
+				import('/components/GroupItem.js'),
+				import('/components/ItemItem.js')
+			]).then(() => {
+				this.openGroups = groups;
+				this.openGroup = groups[0];
+				this.openItem = groups[0].items[0];
+			});
+		} else {
+			this.viewCreateGroupsTemplate();
+		}
 	}
 
 	get getEls() { return [
@@ -66,9 +79,8 @@ class ViewPage extends HTMLEl {
 		'.item',
 	]}
 
-
-	update() {
-		this.groups = getGroupsInStore();
+	viewCreateGroupsTemplate() {
+		console.info('viewCreateGroupsTemplate');
 	}
 }
 
