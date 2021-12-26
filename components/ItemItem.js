@@ -1,9 +1,21 @@
+import('/components/ReusableInput.js');
+
 class ItemItem extends HTMLEl {
 	get html() { return `
-		<div class="title"></div>
+		<reusable-input class="title"></reusable-input>
 		<div class="created"></div>
 		<div class="updated"></div>
-		<div class="fields-container"></div>
+		<div class="fields">
+			<div class="fields_priority">
+				<reusable-input class="name"></reusable-input>
+				<reusable-input class="password"></reusable-input>
+				<reusable-input class="service"></reusable-input>
+				<reusable-input class="expires"></reusable-input>
+				<reusable-input class="tags"></reusable-input>
+			</div>
+
+			<div class="fields_custom"></div>
+		</div>
 	`}
 
 	get css() { return `
@@ -58,7 +70,12 @@ class ItemItem extends HTMLEl {
 		'.title',
 		'.created',
 		'.updated',
-		'.fields-container',
+		'.name',
+		'.password',
+		'.service',
+		'.expires',
+		'.tags',
+		'.fields_custom'
 	]}
 
 	static get observedAttributes() { return []}
@@ -69,20 +86,33 @@ class ItemItem extends HTMLEl {
 		created,
 		updated,
 	}) {
-		console.log(fields);
-		const makeField = field => {
-			console.log(field);
-			// const fieldEl = document.createElement('div');
-			// itemEl.innerText = item.title;
-			// itemEl.addEventListener('click', event => this.emit('item selected', { value: event.target.innerText }));
-			// return itemEl;
-		};
-
-		this.titleEl.innerText = title;
+		this.titleEl.value = title;
 		this.createdEl.innerText = created;
 		this.updatedEl.innerText = updated;
-		clearContainerEl(this.fieldsContainerEl);
-		this.fieldsContainerEl.append(...fields.map( field => makePriorityField(field)));
+		this.updatePriorityFields(fields.priority);
+		this.renderCustomFields(fields.custom);
+	}
+
+	updatePriorityFields(fields) {
+		[
+			'name',
+			'password',
+			'service',
+			'expires',
+			'tags'
+		].forEach(key => key && (this[key + "El"].value = fields[key]));
+	}
+
+	renderCustomFields(fields) {
+		clearContainerEl(this.fieldsCustomEl);
+
+		// const makeFields = (key, value) => {
+		// 	const input = document.createElement('reusable-input');
+		// };
+
+		this.fieldsCustomEl.append(
+			...Object.keys(fields)
+			.map((key, i) => `| ${ ++i }) ${ key } : ${ fields[key] } \n |`));
 	}
 }
 
