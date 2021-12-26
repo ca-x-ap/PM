@@ -1,11 +1,15 @@
 import('/components/HeaderMenu.js');
+import('/components/LogoIcon.js');
 import('/components/FooterMenu.js');
 
 class PageLayout extends HTMLEl {
 	get html() { return `
-		<header-menu class="header"></header-menu>
+		<header class="header">
+			<logo-icon class="logo"></logo-icon>
+			<header-menu class="header-menu"></header-menu>
+		</header>
 		<div class="main childrens"></div>
-		<footer-menu class="footer"></footer-menu>
+		<footer-menu class="footer-menu"></footer-menu>
 	`}
 
 	get css() { return `
@@ -21,6 +25,12 @@ class PageLayout extends HTMLEl {
 		}
 
 		.header {
+			display: flex;
+			align-items: center;
+			gap: 3rem;
+		}
+
+		.header-menu {
 			width: 100%;
 			height: 5rem;
 		}
@@ -30,14 +40,17 @@ class PageLayout extends HTMLEl {
 			min-height: calc(100vh - 14rem);
 		}
 
-		.footer {
+		.footer-menu {
 			width: 100%;
 			height: 5rem;
 		}
 	`}
 
 	get props() { return {
-		childrens: { observer: ({ childrens }) => childrens.forEach(children => this.mainEl.append(children)) },
+		childrens: {
+			observer: ({ childrens }) =>
+				childrens.forEach(children => this.mainEl.append(children))
+		},
 	}}
 
 	connectedCallback() {
@@ -45,9 +58,10 @@ class PageLayout extends HTMLEl {
 	}
 
 	get getEls() { return [
-		'.header',
+		'.logo',
+		'.header-menu',
 		'.main',
-		'.footer'
+		'.footer-menu'
 	]}
 }
 
