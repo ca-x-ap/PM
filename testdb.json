@@ -1,0 +1,79 @@
+[
+  {
+    "title": "Group 0",
+    "description": "Group 0",
+    "created": "1640354018134",
+    "updated": "1640354110134",
+    "searchOptions": "title tags",
+    "sortOptions": "title",
+    "items": [
+      {
+        "title": "Item 0",
+        "fields": {
+          "priority": {
+            "name": "My name",
+            "password": "some easy password",
+            "expires": "6234141241323",
+            "service": "gmail.com",
+            "tags": "gmail google email"
+          },
+          "custom": {}
+        },
+        "created": "1640334118134",
+        "updated": "1643254118134",
+        "color": "#FFFFFF"
+      },
+      {
+        "title": "Item 1",
+        "fields": {
+          "priority": {
+            "name": "My name other name what i have",
+            "password": "not a easy password",
+            "expires": "6233154241323",
+            "service": "apple.com",
+            "tags": "apple tv+"
+          },
+          "custom": {
+            "email": "rutr@gmail.com",
+            "phone": "89006002030"
+          }
+        },
+        "created": "1640004118134",
+        "updated": "1640354100134",
+        "color": "#000000"
+      }
+    ]
+  },
+  {
+    "title": "Group 1",
+    "description": "Group 1",
+    "created": "1640354118000",
+    "updated": "1640350008134",
+    "searchOptions": "sadwad dwasdwa",
+    "sortOptions": "updated",
+    "items": [
+      {
+        "title": "Item 2",
+        "fields": {
+          "priority": {
+            "name": "My name My name My name My name My name My name",
+            "password": "some easy password some easy password some easy password",
+            "expires": "6234141241323",
+            "service": "elephator.su",
+            "tags": "elephator su"
+          },
+          "custom": {
+            "email1": "rutr1@gmail.com",
+            "email2": "rutr2@gmail.com",
+            "email3": "rutr3@gmail.com",
+            "phone1": "89006002030",
+            "phone2": "+79006002030"
+          }
+        },
+        "created": "1640354000164",
+        "updated": "1640354116134",
+        "color": "red"
+      }
+    ]
+  }
+]
