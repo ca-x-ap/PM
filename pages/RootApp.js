@@ -1,12 +1,11 @@
 import { HTMLEl } from '/lib/lib.js';
-
 import { makeEl } from '/lib/lib.js';
 import { toKebabCase } from '/lib/lib.js';
+import { onError } from '/lib/lib.js';
+import('/components/PageLayout.js');
 
 class RootApp extends HTMLEl {
-	get html () { return `
-		<page-layout />
-	`}
+	get html () { return `<page-layout />` }
 
 	connectedCallback() {
 		const pathNames = window.location.pathname.split('/').filter(pName => pName !== '');
@@ -16,7 +15,7 @@ class RootApp extends HTMLEl {
 		import(`/pages/${ pageName }.js`).then(() => {
 			const pageEl = makeEl(toKebabCase(pageName));
 			this.shadowRoot.querySelector('page-layout').append(pageEl);
-		}).catch(error => console.error('Page is not loaded', error));
+		}).catch(error => onError('Page is not loaded', error));
 	}
 }
 

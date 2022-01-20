@@ -1,5 +1,5 @@
 {
-  "name": "pm",
+  "name": "pasman",
   "version": "1.0.0",
   "description": "## About it",
   "main": "extension.js",
@@ -21,7 +21,7 @@
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/ca-x-ap/PM/issues"
+    "url": "https://github.com/ca-x-ap/PasMan/issues"
   },
-  "homepage": "https://github.com/ca-x-ap/PM#readme"
+  "homepage": "https://github.com/ca-x-ap/PasMan#readme"
 }

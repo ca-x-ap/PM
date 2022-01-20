@@ -41,9 +41,14 @@ class ViewPage extends HTMLEl {
 	constructor() {
 		super();
 
+		window.addEventListener('groups updated', event => {
+			console.log('keke', event);
+			this.checkViewGroups();
+		});
+
 		this.groupsListEl.addEventListener('group selected', event => {
 			const groupName = event.detail.value;
-			const groups = this.groups;
+			const groups = this.openGroups;
 			const group = groups.find(group => group.title === groupName);
 			this.openGroup = group;
 		});
@@ -57,21 +62,7 @@ class ViewPage extends HTMLEl {
 	}
 
 	connectedCallback() {
-		const groups = getGroupsInStore();
-		const isGroupsValidArray = groups instanceof Array && groups.length > 0;
-		if (isGroupsValidArray) {
-			Promise.all([
-				import('/components/GroupsList.js'),
-				import('/components/GroupItem.js'),
-				import('/components/ItemItem.js')
-			]).then(() => {
-				this.openGroups = groups;
-				this.openGroup = groups[0];
-				this.openItem = groups[0].items[0];
-			});
-		} else {
-			this.viewCreateGroupsTemplate();
-		}
+		this.checkViewGroups();
 	}
 
 	get getEls() { return [
@@ -79,6 +70,23 @@ class ViewPage extends HTMLEl {
 		'.group-item',
 		'.item',
 	]}
+
+
+	checkViewGroups() {
+		const groups = getGroupsInStore();
+		const isGroupsValidArray = groups instanceof Array && groups.length > 0;
+		isGroupsValidArray
+		? Promise.all([
+				import('/components/GroupsList.js'),
+				import('/components/GroupItem.js'),
+				import('/components/ItemItem.js')
+			]).then(() => {
+				this.openGroups = groups;
+				this.openGroup = groups[0];
+				this.openItem = groups[0].items[0];
+			})
+		: this.viewCreateGroupsTemplate();
+	}
 
 	viewCreateGroupsTemplate() {
 		console.info('viewCreateGroupsTemplate');

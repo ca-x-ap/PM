@@ -1,5 +1,5 @@
 import { clearContainerEl } from '/lib/lib.js';
-import('/components/ReusableInput.js');
+import '/components/ReusableInput.js';
 
 class ItemItem extends HTMLEl {
 	get html() { return `

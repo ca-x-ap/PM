@@ -1,6 +1,6 @@
-import('/components/HeaderMenu.js');
-import('/components/LogoIcon.js');
-import('/components/FooterMenu.js');
+import '/components/HeaderMenu.js';
+import '/components/LogoIcon.js';
+import '/components/FooterMenu.js';
 
 class PageLayout extends HTMLEl {
 	get html() { return `
@@ -25,6 +25,7 @@ class PageLayout extends HTMLEl {
 		}
 
 		.header {
+			width: 100%;
 			display: flex;
 			align-items: center;
 			gap: 3rem;
@@ -47,14 +48,11 @@ class PageLayout extends HTMLEl {
 	`}
 
 	get props() { return {
-		childrens: {
-			observer: ({ childrens }) =>
-				childrens.forEach(children => this.mainEl.append(children))
-		},
+		childrens: { observer: ({ childrens }) => this.mainEl.append(...childrens) },
 	}}
 
 	connectedCallback() {
-		this.childrens = [...this.children];
+		this.moveChildrenInShadowRoot();
 	}
 
 	get getEls() { return [
@@ -63,6 +61,10 @@ class PageLayout extends HTMLEl {
 		'.main',
 		'.footer-menu'
 	]}
+
+	moveChildrenInShadowRoot() {
+		this.childrens = [...this.children];
+	}
 }
 
 customElements.define(PageLayout.nameIs, PageLayout);
