@@ -1,13 +1,9 @@
 import '/components/HeaderMenu.js';
-import '/components/LogoIcon.js';
 import '/components/FooterMenu.js';
 
 class PageLayout extends HTMLEl {
 	get html() { return `
-		<header class="header">
-			<logo-icon class="logo"></logo-icon>
-			<header-menu class="header-menu"></header-menu>
-		</header>
+		<header-menu class="header-menu"></header-menu>
 		<div class="main childrens"></div>
 		<footer-menu class="footer-menu"></footer-menu>
 	`}
@@ -20,15 +16,8 @@ class PageLayout extends HTMLEl {
 			justify-content: space-between;
 			align-items: center;
 			gap: 2rem;
-			width: 45rem;
+			width: min(70rem, calc(100% - 2rem));
 			min-height: 100vh;
-		}
-
-		.header {
-			width: 100%;
-			display: flex;
-			align-items: center;
-			gap: 3rem;
 		}
 
 		.header-menu {
@@ -43,7 +32,7 @@ class PageLayout extends HTMLEl {
 
 		.footer-menu {
 			width: 100%;
-			height: 5rem;
+			min-height: 5rem;
 		}
 	`}
 
@@ -56,11 +45,9 @@ class PageLayout extends HTMLEl {
 	}
 
 	get getEls() { return [
-		'.logo',
-		'.header-menu',
 		'.main',
-		'.footer-menu'
 	]}
+
 
 	moveChildrenInShadowRoot() {
 		this.childrens = [...this.children];
