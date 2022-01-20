@@ -9,7 +9,7 @@ export class Menu {
 		this[method](event);
 	}
 
-	onFileDrop(event) {
+	onFileUploaded(event) {
 		const files = [...event.detail.value];
 		files.forEach(async file => {
 			const fileText = await file.text();
@@ -19,11 +19,15 @@ export class Menu {
 				? item.forEach(group => appendGroupInStore(group))
 				: appendGroupInStore(item);
 		});
+
+		console.info(files, 'Uploaded'); // LOG !
 	}
 
 	onMenuFileGet() {
 		const fileText = getGroupsInStore();
 		const fileURL = makeFileUrl(fileText);
 		window.open(fileURL);
+
+		console.info(fileURL, 'Created'); // LOG !
 	}
 }

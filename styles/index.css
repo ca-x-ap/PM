@@ -1,23 +1,11 @@
-* {
-	box-sizing: border-box;
-}
-
-.document {
-	/* --width_block: min(55rem, 100% - 1rem); */
-	/* --base_padding: 1rem; */
+@font-face {
+	font-family: "Roboto";
+	src: url('/public/assets/Roboto/Roboto-Light.ttf') format("truetype");
 }
 
 @font-face {
-	font-family: "Montserrat-Thin";
-	src: url('../public/assets/Montserrat/Montserrat-Thin.ttf') format("truetype");
-}
-@font-face {
-	font-family: "Montserrat-Regular";
-	src: url('../public/assets/Montserrat/Montserrat-Regular.ttf') format("truetype");
-}
-@font-face {
-	font-family: "Montserrat-Light";
-	src: url('../public/assets/Montserrat/Montserrat-Light.ttf') format("truetype");
+	font-family: "Roboto_Mono";
+	src: url('/public/assets/Roboto_Mono/static/RobotoMono-Thin.ttf') format("truetype");
 }
 
 :root {
@@ -28,7 +16,7 @@
 .container {
 	margin: 0;
 	min-height: 100vh;
-	background: var(--color-bg-main);
+	background: var(--color-0);
 	scroll-behavior: smooth;
 	font-family: "Roboto", -apple-system, system-ui, sans-serif;
 	-webkit-font-smoothing: antialiased;
