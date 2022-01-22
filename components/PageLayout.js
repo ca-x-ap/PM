@@ -1,5 +1,5 @@
-import '/components/HeaderMenu.js';
-import '/components/FooterMenu.js';
+import '../components/HeaderMenu.js';
+import '../components/FooterMenu.js';
 
 class PageLayout extends HTMLEl {
 	get html() { return `

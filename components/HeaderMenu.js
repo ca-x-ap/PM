@@ -1,5 +1,5 @@
-import { Menu } from '/app/handlers.js';
-import { createEvent } from '/lib/lib.js';
+import { Menu } from '../app/handlers.js';
+import { createEvent } from '../lib/lib.js';
 
 class HeaderMenu extends HTMLEl {
 	get html() { return `
