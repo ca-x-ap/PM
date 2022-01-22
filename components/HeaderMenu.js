@@ -1,92 +1,85 @@
 import { Menu } from '/app/handlers.js';
+import { createEvent } from '/lib/lib.js';
 
 class HeaderMenu extends HTMLEl {
 	get html() { return `
-		<!--
 		<div class="item" id="create">
-			<span class="item__text">Create</span>
+			<span class="item__text">
+				Create new group
+			</span>
 		</div>
-		-->
 
-		<div class="item" id="dropdown">
+		<div class="item" id="get">
+			<span class="item__text">
+				Get
+			</span>
+		</div>
+
+		<div class="item" id="upload">
 			<label class="item__text">
+				<input class="input-file" type="file" accept="application/JSON, .txt" multiple />
 				Upload
-				<input
-					class="dropdown_input"
-					type="file"
-					accept="application/JSON, .txt"
-					multiple
-				/>
 			</label>
 		</div>
-
-		<div class="item" id="download">
-			<span class="item__text">Get</span>
-		</div>
-
-		<!--
-		<div class="item" id="tables">
-			<span class="item__text">Tables</span>
-		</div>
-		-->
 	`}
 
 	get css() { return `
 		:host {
 			display: flex;
 			align-items: center;
-			justify-content: space-between;
+			justify-content: flex-start;
 			gap: 1rem;
 			height: auto;
 			width: 100%;
+			padding: 1rem 0;
+		}
+
+		.item__text {
 			padding: 1rem;
-			background-color: var(--color-bg_accent);
-			box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-		}
-
-		.item {
-			align-items: center;
 			cursor: pointer;
-			display: flex;
-			font-family: "Montserrat-Regular";
-			justify-content: center;
-			padding: .5rem;
-			user-select: none;
+			color: var(--color-1);
 		}
 
-		.dropdown_input {
+		.item__text:hover {
+			color: var(--color-2);
+		}
+
+		.input-file {
 			display: none;
 		}
 	`}
 
 	constructor() {
 		super();
-
-		this.dropdownInputEl.addEventListener('change', event => {
-			this.dropdownInputHandler(event);
-		});
-		this.downloadEl.addEventListener('click', event => {
-			this.downloadHandler(event);
-		});
-
 		const menu = new Menu();
-		this.addEventListener('file drop', menu);
-		this.addEventListener('menu file get', menu);
+
+		this.inputFileEl.addEventListener('change', event => {
+			this.emitEvent('file uploaded', { value: event.target.files });
+			event.preventDefault();
+		});
+		this.addEventListener('file uploaded', menu);
+
+		// this.getEl.addEventListener('click', event => {
+		// 	event.preventDefault();
+		// 	this.emit('menu file get');
+		// });
+		// this.addEventListener('menu file get', menu);
 	}
 
 	get getEls() { return [
-		'.dropdown_input',
-		'#download'
+		'.input-file',
+		'#create',
+		'#get',
+		'#upload'
 	]}
 
 
 	dropdownInputHandler(event) {
-		this.emit('file drop', { value: event.target.files });
+
 	}
 
 	downloadHandler(event) {
-		event.preventDefault();
-		this.emit('menu file get');
+
 	}
 }
 

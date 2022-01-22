@@ -1,0 +1,16 @@
+{
+  "name": "Eazy PasMan",
+  "short_name": "PasMan",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#252525",
+  "description": "Password Manager. Use JSON. Saves and encrypts JSON Tree as file.",
+  "icons": [{
+    "src": "/public/favicon/icon.svg",
+    "sizes": "48x48",
+    "type": "image/x-icon"
+  }],
+  "related_applications": [{
+    "platform": "web"
+  }]
+}
