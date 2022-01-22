@@ -1,7 +1,7 @@
-import { HTMLEl } from '/lib/lib.js';
-import { toKebabCase } from '/lib/lib.js';
-import { onError } from '/lib/lib.js';
-import('/components/PageLayout.js');
+import { HTMLEl } from '../lib/lib.js';
+import { toKebabCase } from '../lib/lib.js';
+import { onError } from '../lib/lib.js';
+import('../components/PageLayout.js');
 
 class RootApp extends HTMLEl {
 	get html () { return `<page-layout />` }
@@ -10,7 +10,7 @@ class RootApp extends HTMLEl {
 		const pathNames = this.getFitlerPathNames();
 		const pageName = pathNames[0] || 'StartPage';
 
-		import(`/pages/${ pageName }.js`)
+		import(`../pages/${ pageName }.js`)
 			.then(() => this.renderPage(pageName))
 			.catch(error => this.onError(error));
 	}
@@ -24,7 +24,7 @@ class RootApp extends HTMLEl {
 	onError(error) {
 		const pageLayoutEl = this.shadowRoot.querySelector('page-layout');
 		onError('Page is not loaded!', error);
-		import(`/pages/ErrorPage.js`).then(() => pageLayoutEl.append(document.createElement('error-page')));
+		import(`../pages/ErrorPage.js`).then(() => pageLayoutEl.append(document.createElement('error-page')));
 	}
 
 	getFitlerPathNames() {

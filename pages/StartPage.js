@@ -1,5 +1,5 @@
-import { clearContainerEl } from '/lib/lib.js';
-import { getGroupsInStore } from '/app/store.js';
+import { clearContainerEl } from '../lib/lib.js';
+import { getGroupsInStore } from '../app/store.js';
 
 class StartPage extends HTMLEl {
 	get html() { return `
@@ -41,7 +41,7 @@ class StartPage extends HTMLEl {
 		// Change (add demo)
 		const groups = getGroupsInStore();
 		const isGroupsValidArray = groups instanceof Array && groups.length > 0;
-		isGroupsValidArray && import('/components/GroupItem.js').then(() => this.renderGroups(groups))
+		isGroupsValidArray && import('../components/GroupItem.js').then(() => this.renderGroups(groups))
 	}
 
 	renderGroups(groups) {
